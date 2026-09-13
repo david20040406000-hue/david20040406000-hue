@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="870" viewBox="0 0 480 870" role="img" aria-labelledby="title desc">
+<title id="title">Zhaxia — Code. Adapt. Evolve.</title>
+<desc id="desc">Zhaxia 的個人首頁。自主決策與演算法；作品：Screeps Empire AI；任務調度、空間規劃與 CPU 預算管理。軌道與光線為裝飾動畫。</desc>
+<defs>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#71f6c5"/><stop offset="1" stop-color="#7ebaff"/></linearGradient>
+  <radialGradient id="halo"><stop stop-color="#71f6c5" stop-opacity=".13"/><stop offset="1" stop-color="#71f6c5" stop-opacity="0"/></radialGradient>
+  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1b2d38" stroke-width=".6"/></pattern>
+  <clipPath id="frame"><rect x="1" y="1" width="478" height="868" rx="20"/></clipPath>
+  <clipPath id="typing"><rect class="type-reveal" x="0" y="-22" width="380" height="30"/></clipPath>
+</defs>
+<style>
+  text {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill:#edf5f4;}
+  .mono {font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:14px;}
+  .label {font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:11px; letter-spacing:2px; fill:#9aaebb;}
+  .muted {fill:#9aaebb;} .green {fill:#71f6c5;} .blue {fill:#7ebaff;}
+  .reveal {animation:appear .65s both;} .row1 {animation-delay:.55s;} .row2 {animation-delay:.8s;} .row3 {animation-delay:1.05s;} .row4 {animation-delay:1.3s;} .row5 {animation-delay:1.55s;}
+  .type-reveal {animation:typing 1.25s steps(28,end) both;}
+  .orbit {transform-box:fill-box;transform-origin:center;animation:rotate 24s linear infinite;}
+  .orbit-back {animation-direction:reverse;animation-duration:36s;}
+  .flow {stroke-dasharray:38 520;animation:flow 7s linear infinite;}
+  .cursor {animation:blink 1.4s step-end infinite;}
+  @keyframes appear {from {opacity:0;transform:translateY(5px);} to {opacity:1;transform:translateY(0);}}
+  @keyframes typing {from {width:0;} to {width:380px;}}
+  @keyframes rotate {to {transform:rotate(360deg);}}
+  @keyframes flow {to {stroke-dashoffset:-558;}}
+  @keyframes blink {0%,60% {opacity:1;} 61%,100% {opacity:0;}}
+  @media (prefers-reduced-motion: reduce) { .reveal,.type-reveal,.orbit,.flow,.cursor {animation:none !important;} }
+</style>
+<g clip-path="url(#frame)">
+<rect width="480" height="870" fill="#0b1016"/>
+<rect width="480" height="280" fill="url(#grid)"/>
+<ellipse cx="380" cy="110" rx="330" ry="230" fill="url(#halo)"/>
+<path d="M28 1H452" stroke="url(#accent)" stroke-width="3"/>
+
+<text x="28" y="38" class="label"  >ZX / PERSONAL SPACE</text>
+<text x="452" y="38" class="label"  text-anchor="end">GITHUB PROFILE</text>
+<path d="M28 56L452 56" stroke="#273945"/>
+<text x="28" y="94" class="label green"  >HELLO, WORLD.</text>
+<text x="25" y="168" class="" font-size="70" font-weight="800" letter-spacing="-5">ZHAXIA</text>
+<text x="28" y="208" class="" font-size="24" font-weight="500">Code. Adapt. Evolve.</text>
+<text x="28" y="240" class="muted" font-size="16" >讓程式感知、決策，持續演化。</text>
+<rect x="28" y="282" width="424" height="292" rx="12" fill="#101923" stroke="#273945"/>
+<circle cx="48" cy="303" r="4" fill="#fa817c"/>
+<circle cx="64" cy="303" r="4" fill="#e8be68"/>
+<circle cx="80" cy="303" r="4" fill="#65c799"/>
+<text x="110" y="307" class="mono muted"  style="font-size:12px">zhaxia / profile.json</text>
+<path d="M28 324L452 324" stroke="#273945"/>
+<g transform="translate(48 358)"><text class="mono green">❯</text><g transform="translate(24 0)" clip-path="url(#typing)"><text class="mono">cat ./profile.json</text></g></g>
+<g class="reveal row1">
+<text x="48" y="393" class="mono muted"  xml:space="preserve">{</text>
+</g>
+<g class="reveal row2">
+<text x="48" y="416" class="mono "  xml:space="preserve">  &quot;name&quot;: &quot;Zhaxia&quot;,</text>
+</g>
+<g class="reveal row3">
+<text x="48" y="439" class="mono "  xml:space="preserve">  &quot;focus&quot;: &quot;Autonomous agents&quot;,</text>
+</g>
+<g class="reveal row4">
+<text x="48" y="462" class="mono "  xml:space="preserve">  &quot;tools&quot;: [&quot;JavaScript&quot;],</text>
+</g>
+<g class="reveal row5">
+<text x="48" y="485" class="mono "  xml:space="preserve">  &quot;approach&quot;: &quot;Build &amp; refine&quot;</text>
+</g>
+<g class="reveal row5">
+<text x="48" y="508" class="mono muted"  xml:space="preserve">}</text>
+</g>
+<text x="48" y="552" class="mono green"  >❯</text>
+<rect class="cursor" x="71" y="540" width="8" height="15" rx="1" fill="#71f6c5"/>
+<rect x="28" y="590" width="424" height="174" rx="12" fill="#101923" stroke="#273945"/>
+<text x="48" y="618" class="label"  >01 / SCREEPS ALGORITHMS</text>
+<text x="48" y="656" class="" font-size="22" font-weight="650">Screeps Empire AI</text>
+<text x="48" y="684" class="muted" font-size="16" >任務調度 · 空間規劃 · CPU 預算</text>
+<path d="M48 704L432 704" stroke="#273945"/>
+<text x="48" y="734" class="mono green"  style="font-size:12px">JAVASCRIPT · PRIVATE SOURCE</text>
+<path d="M28 787L452 787" stroke="#273945"/>
+<text x="28" y="812" class="label"  >CRAFTED WITH CURIOSITY.</text>
+<text x="452" y="812" class="label green"  text-anchor="end">ZX / 01</text>
+<path class="flow" d="M28 844H452" stroke="url(#accent)" stroke-width="2"/>
+</g><rect x="1" y="1" width="478" height="868" rx="20" fill="none" stroke="#273945"/></svg>

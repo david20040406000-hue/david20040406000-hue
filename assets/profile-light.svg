@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc">
+<title id="title">Zhaxia — Code. Adapt. Evolve.</title>
+<desc id="desc">Zhaxia 的個人首頁。自主決策與演算法；作品：Screeps Empire AI；任務調度、空間規劃與 CPU 預算管理。軌道與光線為裝飾動畫。</desc>
+<defs>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#007759"/><stop offset="1" stop-color="#205da8"/></linearGradient>
+  <radialGradient id="halo"><stop stop-color="#007759" stop-opacity=".13"/><stop offset="1" stop-color="#007759" stop-opacity="0"/></radialGradient>
+  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#dce9e7" stroke-width=".6"/></pattern>
+  <clipPath id="frame"><rect x="1" y="1" width="958" height="648" rx="20"/></clipPath>
+  <clipPath id="typing"><rect class="type-reveal" x="0" y="-22" width="380" height="30"/></clipPath>
+</defs>
+<style>
+  text {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill:#122d31;}
+  .mono {font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:14px;}
+  .label {font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:11px; letter-spacing:2px; fill:#526b74;}
+  .muted {fill:#526b74;} .green {fill:#007759;} .blue {fill:#205da8;}
+  .reveal {animation:appear .65s both;} .row1 {animation-delay:.55s;} .row2 {animation-delay:.8s;} .row3 {animation-delay:1.05s;} .row4 {animation-delay:1.3s;} .row5 {animation-delay:1.55s;}
+  .type-reveal {animation:typing 1.25s steps(28,end) both;}
+  .orbit {transform-box:fill-box;transform-origin:center;animation:rotate 24s linear infinite;}
+  .orbit-back {animation-direction:reverse;animation-duration:36s;}
+  .flow {stroke-dasharray:38 520;animation:flow 7s linear infinite;}
+  .cursor {animation:blink 1.4s step-end infinite;}
+  @keyframes appear {from {opacity:0;transform:translateY(5px);} to {opacity:1;transform:translateY(0);}}
+  @keyframes typing {from {width:0;} to {width:380px;}}
+  @keyframes rotate {to {transform:rotate(360deg);}}
+  @keyframes flow {to {stroke-dashoffset:-558;}}
+  @keyframes blink {0%,60% {opacity:1;} 61%,100% {opacity:0;}}
+  @media (prefers-reduced-motion: reduce) { .reveal,.type-reveal,.orbit,.flow,.cursor {animation:none !important;} }
+</style>
+<g clip-path="url(#frame)">
+<rect width="960" height="650" fill="#f4f8f7"/>
+<rect width="960" height="280" fill="url(#grid)"/>
+<ellipse cx="860" cy="110" rx="330" ry="230" fill="url(#halo)"/>
+<path d="M28 1H932" stroke="url(#accent)" stroke-width="3"/>
+
+<text x="36" y="38" class="label"  >ZX / PERSONAL SPACE</text>
+<text x="924" y="38" class="label"  text-anchor="end">GITHUB PROFILE</text>
+<path d="M36 56L924 56" stroke="#ccdcde"/>
+<text x="36" y="94" class="label green"  >HELLO, WORLD.</text>
+<text x="33" y="181" class="" font-size="96" font-weight="800" letter-spacing="-5">ZHAXIA</text>
+<text x="36" y="224" class="" font-size="29" font-weight="500">Code. Adapt. Evolve.</text>
+<text x="36" y="259" class="muted" font-size="16" >讓程式感知、決策，持續演化。</text>
+<g transform="translate(780 164)">
+<circle r="101" fill="none" stroke="#ccdcde"/>
+<circle r="75" fill="none" stroke="#ccdcde"/>
+<path d="M-122 0H122M0-122V122" stroke="#ccdcde" stroke-dasharray="3 7"/>
+<g class="orbit"><circle r="101" fill="none" stroke="#007759" stroke-width="2" stroke-dasharray="65 570"/><circle cx="101" r="4" fill="#007759"/></g>
+<g class="orbit orbit-back"><circle r="75" fill="none" stroke="#205da8" stroke-width="2" stroke-dasharray="45 427"/><circle cx="-75" r="3" fill="#205da8"/></g>
+<path d="M-28-30H30L-30 30H28" fill="none" stroke="url(#accent)" stroke-width="9" stroke-linejoin="round"/>
+</g>
+<rect x="36" y="300" width="546" height="292" rx="12" fill="#ffffff" stroke="#ccdcde"/>
+<circle cx="56" cy="321" r="4" fill="#fa817c"/>
+<circle cx="72" cy="321" r="4" fill="#e8be68"/>
+<circle cx="88" cy="321" r="4" fill="#65c799"/>
+<text x="118" y="325" class="mono muted"  style="font-size:12px">zhaxia / profile.json</text>
+<path d="M36 342L582 342" stroke="#ccdcde"/>
+<g transform="translate(56 376)"><text class="mono green">❯</text><g transform="translate(24 0)" clip-path="url(#typing)"><text class="mono">cat ./profile.json</text></g></g>
+<g class="reveal row1">
+<text x="56" y="411" class="mono muted"  xml:space="preserve">{</text>
+</g>
+<g class="reveal row2">
+<text x="56" y="434" class="mono "  xml:space="preserve">  &quot;name&quot;: &quot;Zhaxia&quot;,</text>
+</g>
+<g class="reveal row3">
+<text x="56" y="457" class="mono "  xml:space="preserve">  &quot;focus&quot;: &quot;Autonomous agents&quot;,</text>
+</g>
+<g class="reveal row4">
+<text x="56" y="480" class="mono "  xml:space="preserve">  &quot;tools&quot;: [&quot;JavaScript&quot;],</text>
+</g>
+<g class="reveal row5">
+<text x="56" y="503" class="mono "  xml:space="preserve">  &quot;approach&quot;: &quot;Build. Refine. Repeat.&quot;</text>
+</g>
+<g class="reveal row5">
+<text x="56" y="526" class="mono muted"  xml:space="preserve">}</text>
+</g>
+<text x="56" y="570" class="mono green"  >❯</text>
+<rect class="cursor" x="79" y="558" width="8" height="15" rx="1" fill="#007759"/>
+<rect x="602" y="300" width="322" height="174" rx="12" fill="#ffffff" stroke="#ccdcde"/>
+<text x="622" y="328" class="label"  >01 / SCREEPS ALGORITHMS</text>
+<text x="622" y="366" class="" font-size="22" font-weight="650">Screeps Empire AI</text>
+<text x="622" y="394" class="muted" font-size="16" >任務調度 · 空間規劃 · CPU 預算</text>
+<path d="M622 414L904 414" stroke="#ccdcde"/>
+<text x="622" y="444" class="mono green"  style="font-size:12px">JAVASCRIPT · PRIVATE SOURCE</text>
+<rect x="602" y="490" width="322" height="102" rx="12" fill="#ffffff" stroke="#ccdcde"/>
+<text x="622" y="518" class="label"  >AGENT LOOP</text>
+<text x="622" y="549" class="mono"  style="font-size:12px">SENSE</text>
+<text x="732" y="549" class="mono green"  style="font-size:12px">PLAN</text>
+<text x="838" y="549" class="mono"  style="font-size:12px">ACT</text>
+<path d="M662 545L717 545" stroke="#ccdcde"/>
+<path d="M778 545L824 545" stroke="#ccdcde"/>
+<path class="flow" d="M622 574H904" stroke="url(#accent)" stroke-width="2"/>
+<path d="M36 603L924 603" stroke="#ccdcde"/>
+<text x="36" y="628" class="label"  >CRAFTED WITH CURIOSITY.</text>
+<text x="924" y="628" class="label green"  text-anchor="end">ZX / 01</text>
+</g><rect x="1" y="1" width="958" height="648" rx="20" fill="none" stroke="#ccdcde"/></svg>
