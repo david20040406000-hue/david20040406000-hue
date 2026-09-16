@@ -2,6 +2,8 @@
 from pathlib import Path
 from html import escape
 import argparse
+import hashlib
+import re
 from interests import load_subjects, subject_ring
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -124,3 +126,12 @@ if __name__ == '__main__':
             target = ROOT/'assets'/f'profile-{theme}{"-mobile" if mobile else ""}.svg'
             target.write_text(build(theme,mobile,subjects),encoding='utf-8')
             print(f'{target.name}: {target.stat().st_size:,} bytes')
+    # 直接使用 raw 網址，避免 GitHub /raw/ 轉址移除版本參數。
+    raw_base = 'https://raw.githubusercontent.com/david20040406000-hue/david20040406000-hue/main/assets/'
+    readme = ROOT / 'README.md'
+    def versioned_source(match):
+        name = match.group(2)
+        digest = hashlib.sha256((ROOT / 'assets' / name).read_bytes()).hexdigest()[:12]
+        return f'{match.group(1)}{raw_base}{name}?v={digest}"'
+    source_pattern = r'((?:srcset|src)=")(?:\./assets/|' + re.escape(raw_base) + r')(profile-[\w-]+\.svg)(?:\?v=[^"]*)?"'
+    readme.write_text(re.sub(source_pattern, versioned_source, readme.read_text(encoding='utf-8')), encoding='utf-8')
