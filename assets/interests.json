@@ -1,0 +1,26 @@
+[
+  {
+    "name": "偏微分方程",
+    "percent": 9
+  },
+  {
+    "name": "微分幾何",
+    "percent": 20
+  },
+  {
+    "name": "抽象代數",
+    "percent": 13
+  },
+  {
+    "name": "拓樸學",
+    "percent": 25
+  },
+  {
+    "name": "實分析",
+    "percent": 12
+  },
+  {
+    "name": "泛函分析",
+    "percent": 21
+  }
+]

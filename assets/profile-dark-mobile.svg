@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="870" viewBox="0 0 480 870" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="1060" viewBox="0 0 480 1060" role="img" aria-labelledby="title desc">
 <title id="title">Zhaxia — Code. Adapt. Evolve.</title>
-<desc id="desc">Zhaxia 的個人首頁。自主決策與演算法；作品：Screeps Empire AI；任務調度、空間規劃與 CPU 預算管理。桌面版右側為炸蝦頭像的簡約平面像素圖示，搭配像素顯影動畫。</desc>
+<desc id="desc">Zhaxia 的個人首頁。自主決策與演算法；作品：Screeps Empire AI。數學興趣圓環：偏微分方程 9%、微分幾何 20%、抽象代數 13%、拓樸學 25%、實分析 12%、泛函分析 21%。比例為隨機視覺配置。</desc>
 <defs>
   <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#71f6c5"/><stop offset="1" stop-color="#7ebaff"/></linearGradient>
   <radialGradient id="halo"><stop stop-color="#71f6c5" stop-opacity=".13"/><stop offset="1" stop-color="#71f6c5" stop-opacity="0"/></radialGradient>
   <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1b2d38" stroke-width=".6"/></pattern>
-  <clipPath id="frame"><rect x="1" y="1" width="478" height="868" rx="20"/></clipPath>
+  <clipPath id="frame"><rect x="1" y="1" width="478" height="1058" rx="20"/></clipPath>
   <clipPath id="typing"><rect class="type-reveal" x="0" y="-22" width="380" height="30"/></clipPath>
 </defs>
 <style>
@@ -15,18 +15,18 @@
   .muted {fill:#9aaebb;} .green {fill:#71f6c5;} .blue {fill:#7ebaff;}
   .reveal {animation:appear .65s both;} .row1 {animation-delay:.55s;} .row2 {animation-delay:.8s;} .row3 {animation-delay:1.05s;} .row4 {animation-delay:1.3s;} .row5 {animation-delay:1.55s;}
   .type-reveal {animation:typing 1.25s steps(28,end) both;}
-  .pixel-reveal {animation:pixelBoot 1.1s steps(16,end) both;}
+  .interest-label {animation:appear .5s both;}
   .flow {stroke-dasharray:38 520;animation:flow 7s linear infinite;}
   .cursor {animation:blink 1.4s step-end infinite;}
   @keyframes appear {from {opacity:0;transform:translateY(5px);} to {opacity:1;transform:translateY(0);}}
   @keyframes typing {from {width:0;} to {width:380px;}}
-  @keyframes pixelBoot {from {height:0;} to {height:230px;}}
+  @keyframes drawInterest {from {stroke-dasharray:0 var(--circ);} to {stroke-dasharray:var(--arc) calc(var(--circ) - var(--arc));}}
   @keyframes flow {to {stroke-dashoffset:-558;}}
   @keyframes blink {0%,60% {opacity:1;} 61%,100% {opacity:0;}}
-  @media (prefers-reduced-motion: reduce) { .reveal,.type-reveal,.pixel-reveal,.flow,.cursor {animation:none !important;} }
+  @media (prefers-reduced-motion: reduce) { .reveal,.type-reveal,.interest-arc,.interest-label,.flow,.cursor {animation:none !important;} }
 </style>
 <g clip-path="url(#frame)">
-<rect width="480" height="870" fill="#0b1016"/>
+<rect width="480" height="1060" fill="#0b1016"/>
 <rect width="480" height="280" fill="url(#grid)"/>
 <ellipse cx="380" cy="110" rx="330" ry="230" fill="url(#halo)"/>
 <path d="M28 1H452" stroke="url(#accent)" stroke-width="3"/>
@@ -38,41 +38,95 @@
 <text x="25" y="168" class="" font-size="70" font-weight="800" letter-spacing="-5">ZHAXIA</text>
 <text x="28" y="208" class="" font-size="24" font-weight="500">Code. Adapt. Evolve.</text>
 <text x="28" y="240" class="muted" font-size="16" >讓程式感知、決策，持續演化。</text>
-<rect x="28" y="282" width="424" height="292" rx="12" fill="#101923" stroke="#273945"/>
-<circle cx="48" cy="303" r="4" fill="#fa817c"/>
-<circle cx="64" cy="303" r="4" fill="#e8be68"/>
-<circle cx="80" cy="303" r="4" fill="#65c799"/>
-<text x="110" y="307" class="mono muted"  style="font-size:12px">zhaxia / profile.json</text>
-<path d="M28 324L452 324" stroke="#273945"/>
-<g transform="translate(48 358)"><text class="mono green">❯</text><g transform="translate(24 0)" clip-path="url(#typing)"><text class="mono">cat ./profile.json</text></g></g>
+<g transform="translate(28 268)" aria-label="數學興趣圓環">
+<circle cx="94" cy="84" r="65" fill="none" stroke="#273945" stroke-width="10"/>
+<circle cx="94" cy="84" r="49" fill="none" stroke="#273945" stroke-width=".7"/>
+<circle class="interest-arc" cx="94" cy="84" r="65"
+fill="none" stroke="#71f6c5" stroke-width="10" stroke-linecap="butt"
+stroke-dasharray="32.673 375.734" transform="rotate(-90.0 94 84)"
+style="--arc:32.673;--circ:408.407;animation:drawInterest 0.216s linear 0.150s both"/>
+<circle class="interest-arc" cx="94" cy="84" r="65"
+fill="none" stroke="#7ebaff" stroke-width="10" stroke-linecap="butt"
+stroke-dasharray="77.597 330.810" transform="rotate(-57.6 94 84)"
+style="--arc:77.597;--circ:408.407;animation:drawInterest 0.480s linear 0.366s both"/>
+<circle class="interest-arc" cx="94" cy="84" r="65"
+fill="none" stroke="#c6a5ff" stroke-width="10" stroke-linecap="butt"
+stroke-dasharray="49.009 359.398" transform="rotate(14.400000000000006 94 84)"
+style="--arc:49.009;--circ:408.407;animation:drawInterest 0.312s linear 0.846s both"/>
+<circle class="interest-arc" cx="94" cy="84" r="65"
+fill="none" stroke="#dc9872" stroke-width="10" stroke-linecap="butt"
+stroke-dasharray="98.018 310.389" transform="rotate(61.20000000000002 94 84)"
+style="--arc:98.018;--circ:408.407;animation:drawInterest 0.600s linear 1.158s both"/>
+<circle class="interest-arc" cx="94" cy="84" r="65"
+fill="none" stroke="#d3b967" stroke-width="10" stroke-linecap="butt"
+stroke-dasharray="44.925 363.482" transform="rotate(151.20000000000002 94 84)"
+style="--arc:44.925;--circ:408.407;animation:drawInterest 0.288s linear 1.758s both"/>
+<circle class="interest-arc" cx="94" cy="84" r="65"
+fill="none" stroke="#c1799d" stroke-width="10" stroke-linecap="butt"
+stroke-dasharray="81.681 326.726" transform="rotate(194.40000000000003 94 84)"
+style="--arc:81.681;--circ:408.407;animation:drawInterest 0.504s linear 2.046s both"/>
+<text x="94" y="86" text-anchor="middle" font-size="23" font-weight="650" letter-spacing="2">MATH</text>
+<text x="94" y="105" text-anchor="middle" class="label" style="font-size:8px;letter-spacing:2px">INTERESTS</text>
+<g class="interest-label" style="animation-delay:0.35s">
+<circle cx="202" cy="18" r="3" fill="#71f6c5"/>
+<text x="214" y="22" font-size="14">偏微分方程</text>
+<text x="396" y="22" class="mono" text-anchor="end" style="font-size:14px;fill:#71f6c5">9%</text></g>
+<g class="interest-label" style="animation-delay:0.55s">
+<circle cx="202" cy="45" r="3" fill="#7ebaff"/>
+<text x="214" y="49" font-size="14">微分幾何</text>
+<text x="396" y="49" class="mono" text-anchor="end" style="font-size:14px;fill:#7ebaff">20%</text></g>
+<g class="interest-label" style="animation-delay:0.75s">
+<circle cx="202" cy="72" r="3" fill="#c6a5ff"/>
+<text x="214" y="76" font-size="14">抽象代數</text>
+<text x="396" y="76" class="mono" text-anchor="end" style="font-size:14px;fill:#c6a5ff">13%</text></g>
+<g class="interest-label" style="animation-delay:0.9500000000000001s">
+<circle cx="202" cy="99" r="3" fill="#dc9872"/>
+<text x="214" y="103" font-size="14">拓樸學</text>
+<text x="396" y="103" class="mono" text-anchor="end" style="font-size:14px;fill:#dc9872">25%</text></g>
+<g class="interest-label" style="animation-delay:1.15s">
+<circle cx="202" cy="126" r="3" fill="#d3b967"/>
+<text x="214" y="130" font-size="14">實分析</text>
+<text x="396" y="130" class="mono" text-anchor="end" style="font-size:14px;fill:#d3b967">12%</text></g>
+<g class="interest-label" style="animation-delay:1.35s">
+<circle cx="202" cy="153" r="3" fill="#c1799d"/>
+<text x="214" y="157" font-size="14">泛函分析</text>
+<text x="396" y="157" class="mono" text-anchor="end" style="font-size:14px;fill:#c1799d">21%</text></g>
+</g>
+<rect x="28" y="472" width="424" height="292" rx="12" fill="#101923" stroke="#273945"/>
+<circle cx="48" cy="493" r="4" fill="#fa817c"/>
+<circle cx="64" cy="493" r="4" fill="#e8be68"/>
+<circle cx="80" cy="493" r="4" fill="#65c799"/>
+<text x="110" y="497" class="mono muted"  style="font-size:12px">zhaxia / profile.json</text>
+<path d="M28 514L452 514" stroke="#273945"/>
+<g transform="translate(48 548)"><text class="mono green">❯</text><g transform="translate(24 0)" clip-path="url(#typing)"><text class="mono">cat ./profile.json</text></g></g>
 <g class="reveal row1">
-<text x="48" y="393" class="mono muted"  xml:space="preserve">{</text>
+<text x="48" y="583" class="mono muted"  xml:space="preserve">{</text>
 </g>
 <g class="reveal row2">
-<text x="48" y="416" class="mono "  xml:space="preserve">  &quot;name&quot;: &quot;Zhaxia&quot;,</text>
+<text x="48" y="606" class="mono "  xml:space="preserve">  &quot;name&quot;: &quot;Zhaxia&quot;,</text>
 </g>
 <g class="reveal row3">
-<text x="48" y="439" class="mono "  xml:space="preserve">  &quot;focus&quot;: &quot;Autonomous agents&quot;,</text>
+<text x="48" y="629" class="mono "  xml:space="preserve">  &quot;focus&quot;: &quot;Autonomous agents&quot;,</text>
 </g>
 <g class="reveal row4">
-<text x="48" y="462" class="mono "  xml:space="preserve">  &quot;tools&quot;: [&quot;JavaScript&quot;],</text>
+<text x="48" y="652" class="mono "  xml:space="preserve">  &quot;tools&quot;: [&quot;JavaScript&quot;],</text>
 </g>
 <g class="reveal row5">
-<text x="48" y="485" class="mono "  xml:space="preserve">  &quot;approach&quot;: &quot;Build &amp; refine&quot;</text>
+<text x="48" y="675" class="mono "  xml:space="preserve">  &quot;approach&quot;: &quot;Build &amp; refine&quot;</text>
 </g>
 <g class="reveal row5">
-<text x="48" y="508" class="mono muted"  xml:space="preserve">}</text>
+<text x="48" y="698" class="mono muted"  xml:space="preserve">}</text>
 </g>
-<text x="48" y="552" class="mono green"  >❯</text>
-<rect class="cursor" x="71" y="540" width="8" height="15" rx="1" fill="#71f6c5"/>
-<rect x="28" y="590" width="424" height="174" rx="12" fill="#101923" stroke="#273945"/>
-<text x="48" y="618" class="label"  >01 / SCREEPS ALGORITHMS</text>
-<text x="48" y="656" class="" font-size="22" font-weight="650">Screeps Empire AI</text>
-<text x="48" y="684" class="muted" font-size="16" >任務調度 · 空間規劃 · CPU 預算</text>
-<path d="M48 704L432 704" stroke="#273945"/>
-<text x="48" y="734" class="mono green"  style="font-size:12px">JAVASCRIPT · PRIVATE SOURCE</text>
-<path d="M28 787L452 787" stroke="#273945"/>
-<text x="28" y="812" class="label"  >CRAFTED WITH CURIOSITY.</text>
-<text x="452" y="812" class="label green"  text-anchor="end">ZX / 01</text>
-<path class="flow" d="M28 844H452" stroke="url(#accent)" stroke-width="2"/>
-</g><rect x="1" y="1" width="478" height="868" rx="20" fill="none" stroke="#273945"/></svg>
+<text x="48" y="742" class="mono green"  >❯</text>
+<rect class="cursor" x="71" y="730" width="8" height="15" rx="1" fill="#71f6c5"/>
+<rect x="28" y="780" width="424" height="174" rx="12" fill="#101923" stroke="#273945"/>
+<text x="48" y="808" class="label"  >01 / SCREEPS ALGORITHMS</text>
+<text x="48" y="846" class="" font-size="22" font-weight="650">Screeps Empire AI</text>
+<text x="48" y="874" class="muted" font-size="16" >任務調度 · 空間規劃 · CPU 預算</text>
+<path d="M48 894L432 894" stroke="#273945"/>
+<text x="48" y="924" class="mono green"  style="font-size:12px">JAVASCRIPT · PRIVATE SOURCE</text>
+<path d="M28 977L452 977" stroke="#273945"/>
+<text x="28" y="1002" class="label"  >CRAFTED WITH CURIOSITY.</text>
+<text x="452" y="1002" class="label green"  text-anchor="end">ZX / 01</text>
+<path class="flow" d="M28 1034H452" stroke="url(#accent)" stroke-width="2"/>
+</g><rect x="1" y="1" width="478" height="1058" rx="20" fill="none" stroke="#273945"/></svg>

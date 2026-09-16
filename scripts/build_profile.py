@@ -1,7 +1,8 @@
 """以標準函式庫產生個人首頁 SVG；不讀取帳戶、機密或外部服務。"""
 from pathlib import Path
 from html import escape
-from avatar import portrait
+import argparse
+from interests import load_subjects, subject_ring
 
 ROOT = Path(__file__).resolve().parents[1]
 PALETTES = {
@@ -9,12 +10,13 @@ PALETTES = {
     'light': dict(bg='#f4f8f7', panel='#ffffff', fg='#122d31', muted='#526b74', line='#ccdcde', accent='#007759', blue='#205da8', grid='#dce9e7'),
 }
 
-def build(theme, mobile=False):
+def build(theme, mobile=False, subjects=None):
+    subjects = load_subjects() if subjects is None else subjects
     c = PALETTES[theme]
-    w, h = (480, 870) if mobile else (960, 650)
+    w, h = (480, 1060) if mobile else (960, 650)
     out = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-labelledby="title desc">
 <title id="title">Zhaxia — Code. Adapt. Evolve.</title>
-<desc id="desc">Zhaxia 的個人首頁。自主決策與演算法；作品：Screeps Empire AI；任務調度、空間規劃與 CPU 預算管理。桌面版右側為炸蝦頭像的簡約平面像素圖示，搭配像素顯影動畫。</desc>
+<desc id="desc">Zhaxia 的個人首頁。自主決策與演算法；作品：Screeps Empire AI。數學興趣圓環：{escape('、'.join(s['name']+' '+str(s['percent'])+'%' for s in subjects))}。比例為隨機視覺配置。</desc>
 <defs>
   <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="{c['accent']}"/><stop offset="1" stop-color="{c['blue']}"/></linearGradient>
   <radialGradient id="halo"><stop stop-color="{c['accent']}" stop-opacity=".13"/><stop offset="1" stop-color="{c['accent']}" stop-opacity="0"/></radialGradient>
@@ -29,15 +31,15 @@ def build(theme, mobile=False):
   .muted {{fill:{c['muted']};}} .green {{fill:{c['accent']};}} .blue {{fill:{c['blue']};}}
   .reveal {{animation:appear .65s both;}} .row1 {{animation-delay:.55s;}} .row2 {{animation-delay:.8s;}} .row3 {{animation-delay:1.05s;}} .row4 {{animation-delay:1.3s;}} .row5 {{animation-delay:1.55s;}}
   .type-reveal {{animation:typing 1.25s steps(28,end) both;}}
-  .pixel-reveal {{animation:pixelBoot 1.1s steps(16,end) both;}}
+  .interest-label {{animation:appear .5s both;}}
   .flow {{stroke-dasharray:38 520;animation:flow 7s linear infinite;}}
   .cursor {{animation:blink 1.4s step-end infinite;}}
   @keyframes appear {{from {{opacity:0;transform:translateY(5px);}} to {{opacity:1;transform:translateY(0);}}}}
   @keyframes typing {{from {{width:0;}} to {{width:380px;}}}}
-  @keyframes pixelBoot {{from {{height:0;}} to {{height:230px;}}}}
+  @keyframes drawInterest {{from {{stroke-dasharray:0 var(--circ);}} to {{stroke-dasharray:var(--arc) calc(var(--circ) - var(--arc));}}}}
   @keyframes flow {{to {{stroke-dashoffset:-558;}}}}
   @keyframes blink {{0%,60% {{opacity:1;}} 61%,100% {{opacity:0;}}}}
-  @media (prefers-reduced-motion: reduce) {{ .reveal,.type-reveal,.pixel-reveal,.flow,.cursor {{animation:none !important;}} }}
+  @media (prefers-reduced-motion: reduce) {{ .reveal,.type-reveal,.interest-arc,.interest-label,.flow,.cursor {{animation:none !important;}} }}
 </style>
 <g clip-path="url(#frame)">
 <rect width="{w}" height="{h}" fill="{c['bg']}"/>
@@ -61,10 +63,9 @@ def build(theme, mobile=False):
     text(pad,208 if mobile else 224,'Code. Adapt. Evolve.',size=24 if mobile else 29,extra='font-weight="500"')
     text(pad,240 if mobile else 259,'讓程式感知、決策，持續演化。','muted',16)
 
-    if not mobile:
-        out.append(portrait(theme,c))
+    out.append(subject_ring(theme,c,subjects,mobile))
 
-    ty = 282 if mobile else 300
+    ty = 472 if mobile else 300
     tw = w-2*pad if mobile else 546
     th = 292
     rect(pad,ty,tw,th)
@@ -103,18 +104,22 @@ def build(theme, mobile=False):
         line(px+176,py+245,px+222,py+245)
         out.append(f'<path class="flow" d="M{px+20} {py+274}H{px+pw-20}" stroke="url(#accent)" stroke-width="2"/>')
 
-    fy = 806 if mobile else 622
+    fy = 996 if mobile else 622
     line(pad,fy-19,w-pad,fy-19)
     text(pad,fy+6,'CRAFTED WITH CURIOSITY.', 'label')
     text(w-pad,fy+6,'ZX / 01','label green',extra='text-anchor="end"')
     if mobile:
-        out.append(f'<path class="flow" d="M{pad} 844H{w-pad}" stroke="url(#accent)" stroke-width="2"/>')
+        out.append(f'<path class="flow" d="M{pad} 1034H{w-pad}" stroke="url(#accent)" stroke-width="2"/>')
     out.append(f'</g><rect x="1" y="1" width="{w-2}" height="{h-2}" rx="20" fill="none" stroke="{c["line"]}"/></svg>')
     return '\n'.join(out)+'\n'
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='產生 GitHub 動畫名片')
+    parser.add_argument('--shuffle-subjects', action='store_true', help='重新隨機分配科目比例，合計 100%%')
+    args = parser.parse_args()
+    subjects = load_subjects(shuffle=args.shuffle_subjects)
     for theme in PALETTES:
         for mobile in (False, True):
             target = ROOT/'assets'/f'profile-{theme}{"-mobile" if mobile else ""}.svg'
-            target.write_text(build(theme,mobile),encoding='utf-8')
+            target.write_text(build(theme,mobile,subjects),encoding='utf-8')
             print(f'{target.name}: {target.stat().st_size:,} bytes')
