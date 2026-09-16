@@ -31,15 +31,16 @@ def build(theme, mobile=False, subjects=None):
   .muted {{fill:{c['muted']};}} .green {{fill:{c['accent']};}} .blue {{fill:{c['blue']};}}
   .reveal {{animation:appear .65s both;}} .row1 {{animation-delay:.55s;}} .row2 {{animation-delay:.8s;}} .row3 {{animation-delay:1.05s;}} .row4 {{animation-delay:1.3s;}} .row5 {{animation-delay:1.55s;}}
   .type-reveal {{animation:typing 1.25s steps(28,end) both;}}
-  .interest-label {{animation:appear .5s both;}}
+  .interest-sweep {{animation:revealInterest 2.6s cubic-bezier(.4,0,.2,1) .15s both;}}
+  .interest-label {{animation:appear .6s 1.9s both;}}
   .flow {{stroke-dasharray:38 520;animation:flow 7s linear infinite;}}
   .cursor {{animation:blink 1.4s step-end infinite;}}
   @keyframes appear {{from {{opacity:0;transform:translateY(5px);}} to {{opacity:1;transform:translateY(0);}}}}
   @keyframes typing {{from {{width:0;}} to {{width:380px;}}}}
-  @keyframes drawInterest {{from {{stroke-dasharray:0 var(--circ);}} to {{stroke-dasharray:var(--arc) calc(var(--circ) - var(--arc));}}}}
+  @keyframes revealInterest {{from {{stroke-dashoffset:var(--circ);}} to {{stroke-dashoffset:0;}}}}
   @keyframes flow {{to {{stroke-dashoffset:-558;}}}}
   @keyframes blink {{0%,60% {{opacity:1;}} 61%,100% {{opacity:0;}}}}
-  @media (prefers-reduced-motion: reduce) {{ .reveal,.type-reveal,.interest-arc,.interest-label,.flow,.cursor {{animation:none !important;}} }}
+  @media (prefers-reduced-motion: reduce) {{ .reveal,.type-reveal,.interest-sweep,.interest-label,.flow,.cursor {{animation:none !important;}} }}
 </style>
 <g clip-path="url(#frame)">
 <rect width="{w}" height="{h}" fill="{c['bg']}"/>

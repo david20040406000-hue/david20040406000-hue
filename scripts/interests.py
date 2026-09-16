@@ -36,27 +36,33 @@ def subject_ring(theme, colors, subjects, mobile=False):
         else ['#8550bb', '#a75528', '#826500', '#a44272']
     )
     tx, ty, cx, cy = (28, 268, 94, 84) if mobile else (602, 65, 161, 83)
+    circumference = 2 * math.pi * 65
     out = [f'<g transform="translate({tx} {ty})" aria-label="數學興趣圓環">',
            f'<circle cx="{cx}" cy="{cy}" r="65" fill="none" stroke="{colors["line"]}" stroke-width="10"/>',
-           f'<circle cx="{cx}" cy="{cy}" r="49" fill="none" stroke="{colors["line"]}" stroke-width=".7"/>']
+           f'<circle cx="{cx}" cy="{cy}" r="49" fill="none" stroke="{colors["line"]}" stroke-width=".7"/>',
+           f'''<defs><mask id="interestSweep" maskUnits="userSpaceOnUse" x="{cx-73}" y="{cy-73}" width="146" height="146">
+<circle class="interest-sweep" cx="{cx}" cy="{cy}" r="65" fill="none" stroke="white" stroke-width="12" stroke-linecap="round"
+stroke-dasharray="{circumference:.3f} {circumference:.3f}" stroke-dashoffset="0" transform="rotate(-90 {cx} {cy})"
+style="--circ:{circumference:.3f}"/>
+</mask></defs><g mask="url(#interestSweep)">''']
     start = 0
     for i, subject in enumerate(subjects):
         percent = subject['percent']
-        # 各段依比例順序畫出，合計 2.4 秒沿順時針完成一圈。
-        circumference = 2 * math.pi * 65
-        length = (percent - 1.0) * circumference / 100
+        # 色帶本身不做動畫；共用單一遮罩連續揭露整圈。
+        # 微量重疊避免反鋸齒造成色帶交界的細縫。
+        length = percent * circumference / 100 + 0.12
         out.append(f'''<circle class="interest-arc" cx="{cx}" cy="{cy}" r="65"
 fill="none" stroke="{palette[i]}" stroke-width="10" stroke-linecap="butt"
-stroke-dasharray="{length:.3f} {circumference-length:.3f}" transform="rotate({-90+start*3.6} {cx} {cy})"
-style="--arc:{length:.3f};--circ:{circumference:.3f};animation:drawInterest {percent*.024:.3f}s linear {0.15+start*.024:.3f}s both"/>''')
+stroke-dasharray="{length:.3f} {max(0,circumference-length):.3f}" transform="rotate({-90+start*3.6} {cx} {cy})"/>''')
         start += percent
+    out.append('</g>')
     out.append(f'<text x="{cx}" y="{cy+2}" text-anchor="middle" font-size="23" font-weight="650" letter-spacing="2">MATH</text>')
     out.append(f'<text x="{cx}" y="{cy+21}" text-anchor="middle" class="label" style="font-size:8px;letter-spacing:2px">INTERESTS</text>')
     for i, subject in enumerate(subjects):
         x = 202 if mobile else 12 + (i % 2) * 166
         y = (22+i*27) if mobile else (174+(i//2)*20)
         end_x = 396 if mobile else x+140
-        out.append(f'<g class="interest-label" style="animation-delay:{.35+i*.2}s">')
+        out.append('<g class="interest-label">')
         out.append(f'<circle cx="{x}" cy="{y-4}" r="3" fill="{palette[i]}"/>')
         out.append(f'<text x="{x+12}" y="{y}" font-size="{14 if mobile else 12}">{escape(subject["name"])}</text>')
         out.append(f'<text x="{end_x}" y="{y}" class="mono" text-anchor="end" style="font-size:{14 if mobile else 12}px;fill:{palette[i]}">{subject["percent"]}%</text></g>')
